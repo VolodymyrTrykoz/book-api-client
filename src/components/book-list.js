@@ -1,25 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_BOOKS } from '../api-requests';
+import BookDetails from './book-details';
 
 
 
 function BookList() {
-    const data = useQuery(GET_BOOKS);
+    const {data, loading} = useQuery(GET_BOOKS);
+    const [ckickedBook, setClickedBook] = useState(null)
   
-    if(!data.data){
+    if(loading){
         return<div>Loading...</div>
     }
-    const {books} = data.data;
+    const {books} = data;
     return (
         <div>
-            <ul id="book-list">
+            <ul className="book-list">
                 {
                     books.map(({id, name}) => (
-                        <li key={id}>{name}</li>
+                        <li key={id} onClick={() => setClickedBook(id)}>{name}</li>
                     )) 
                 }
             </ul>
+            <div className="details">
+                <BookDetails id={ckickedBook}/>
+            </div>
         </div>
     );
 }
