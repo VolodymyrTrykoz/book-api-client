@@ -35,6 +35,21 @@ h1 {
     box-shadow: 1px 5px 6px rgb(70, 70, 70);
 }
 
+.list-item {
+    position: relative;
+    display: inline-block;
+}
+
+.list-item button {
+    right: 0;
+    top: 0;
+    font-size: 1rem;
+    padding: 0 4px;
+    transform: rotateZ(45deg);
+    transition: .2s ease-in-out;
+    z-index: 1;
+}
+
 form {
     background: #fff;
     padding: 20px;
@@ -69,6 +84,10 @@ button {
     border: none;
     cursor: pointer;
     position: absolute;
+    
+}
+
+form button {
     bottom: 10px;
     left: 10px;
 }

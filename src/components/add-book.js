@@ -6,8 +6,8 @@ import { GET_AUTHORS, ADD_BOOK, GET_BOOKS } from '../api-requests';
 function AddBook() {
     const data = useQuery(GET_AUTHORS);
     const [addBook, { props }] = useMutation(ADD_BOOK);
-    const [title, setBookTitle] = useState(null);
-    const [genre, setBookGenre] = useState(null);
+    const [title, setBookTitle] = useState('');
+    const [genre, setBookGenre] = useState('');
     const [authorId, setAuthorId] = useState(null);
 
     useEffect(()=>{

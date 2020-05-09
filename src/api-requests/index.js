@@ -1,12 +1,12 @@
 import gql from 'graphql-tag';
 
 export const GET_BOOKS = gql`
-{
-    books {
-        id
-        name
+    query{
+        books {
+            id
+            name
+        }
     }
-}
 `
 export const GET_BOOK_DETAILS = gql`
     query($id: ID){
@@ -14,6 +14,7 @@ export const GET_BOOK_DETAILS = gql`
             name
             genre
                 author {
+                    id
                     name
                     age
                     books {
@@ -26,12 +27,22 @@ export const GET_BOOK_DETAILS = gql`
 `
 
 export const GET_AUTHORS = gql`
-{
-    authors {
-        id
-        name
+    query{
+        authors {
+            id
+            name
+        }
     }
-}
+`
+
+export const EDIT_AUTHOR = gql`
+    mutation($id:ID!, $name: String!, $age: Int){
+        editAuthor(id:$id, name:$name, age:$age ){
+            id
+            name
+            age
+        }
+    }
 `
 
 export const ADD_BOOK = gql`
@@ -42,3 +53,12 @@ export const ADD_BOOK = gql`
         }
     }
 `
+
+export const REMOVE_BOOK = gql`
+    mutation($id: ID!) {
+        removeBook(id:$id){
+            id
+        }
+    }
+`
+  
